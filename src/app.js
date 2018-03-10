@@ -2,12 +2,17 @@ var app = angular.module('myApp', ['filters']);
 app.controller('myCtrl', function($scope, $http) {
     $http.get("http://starlord.hackerearth.com/hackernews")
         .then(function(response) {
-            $scope.newsList = response.data;
-            console.log(response.data);
+            // $scope.newsList = response.data;
+            // console.log(response.data);
+
+            window.localStorage['storageName'] = angular.toJson(response.data);
+
+            var accessData = window.localStorage['storageName'];
+            $scope.newsList = angular.fromJson(accessData);
 
             $scope.propertyName = 'created_at';
             $scope.reverse = true;
-            // $scope.friends = friends;
+
 
             $scope.sortBy = function(propertyName) {
                 $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
