@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#B71C1C">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body ng-app="myApp">
+    <div class="allholder">
+        <div class="navoverlay"></div>
+        <div class="nav">
+            <div id="logo-center" class="centered">
+                <img width=40 src="img/logo.svg">
+            </div>
+            <!--end of logo-->
+            <ul>
+                <li class="selected">
+                    <i class="fa fa-newspaper-o "></i>
+                    <a href="#">News Feed</a>
+                </li>
+                <li>
+                    <i class="fa fa-briefcase"></i>
+                    <a href="https://codepen.io/nikhilrajnair" target="_blank">Portfolio</a>
+                </li>
+                <li>
+                    <i class="fa fa-quote-right"></i>
+                    <a href="https://nikhilrajnair.github.io" target="_blank"> About</a>
+                </li>
+                <li>
+                    <i class="fa fa-send"></i>
+                    <a href="https://linkedin.com/in/nikhilrajnair" target="_blank">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!--end of nav-->
+        <div id="content">
+            <div class="feed" ng-controller="myCtrl">
+                <div>
+                    <button ng-click="sortType = date; sortReverse = !sortReverse;">Sort By Date</button>
+                </div>
+                <input ng-model="searchText" type="text" placeholder="Search News">
+                <!--1 Column Feed Item Holder-->
+                <div class="feed-item blog" ng-repeat="news in newsList | filter:searchText  | orderBy:sortType:sortReverse" ng-show="!$first">
+                    <div class="icon-holder">
+                        <div class="icon">
+                            <!-- <span>{{$index}}</span> -->
+                            <h6>ID{{news.id}}</h6>
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <div class="feed-title">
+                            <a ng-href="{{news.url}}" target="_blank">
+                                {{news.title}}
+                            </a>
+                            <span class="url">({{ news.url | shortURL }})</span>
+                        </div>
+                        <div class="author">By {{news.author}}</div>
+                        <ul>
+                            <li>{{news.num_comments}}
+                                <span>Comments</span>
+                            </li>
+                            <li>{{news.num_points}}
+                                <span>Points</span>
+                            </li>
+                        </ul>
+                        <div class="created">
+                            Created at {{news.created_at}}
+                        </div>
+                        <!--   -->
+                    </div>
+                </div>
+                <!--end of Feed-->
+            </div>
+            <!-- End of Content-->
+        </div>
+        <!--end of allholder-->
+        <div class="bodyholder">
+            <!--End of Status Bar-->
+            <div class="toolbar">
+                <div id="hamburger">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <!--end of hamburger-->
+                <div id="apptitle">
+                    <h1>News Feed</h1>
+                </div>
+                <div class="tools">
+                    <ul>
+                        <li>
+                            <i class="fa fa-search" id="search"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-ellipsis-v" id="settings"></i>
+                        </li>
+                    </ul>
+                </div>
+                <!--end of tools-->
+            </div>
+            <!--end of toolbar-->
+        </div>
+        <!--end of bodyholder-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="src/app.js"></script>
+
+</body>
+
+</html>
