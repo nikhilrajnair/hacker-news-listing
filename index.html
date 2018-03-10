@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#B71C1C">
     <title>Hacker News</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
+
 <body ng-app="myApp">
     <div class="allholder">
         <div class="navoverlay"></div>
@@ -38,6 +40,10 @@
         <!--end of nav-->
         <div id="content">
             <div class="feed" ng-controller="myCtrl">
+                <div class="headlines">
+                    <h1>Hacker News</h1>
+                    <h5>Best Hacker News Articles</h5>
+                </div>
                 <div>
                     <button ng-click="sortType = date; sortReverse = !sortReverse;">Sort By Date</button>
                 </div>
@@ -104,7 +110,6 @@
         <!--end of bodyholder-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="src/app.js"></script>
-
 </body>
 
 </html>

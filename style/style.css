@@ -276,6 +276,18 @@ h1 {
     text-overflow: ellipsis;
 }
 
+.headlines{
+    margin: 10px 0 20px;
+}
+.headlines h1{
+    color: #00aeef;
+    font-size: 28px;
+}
+.headlines h5{
+    color: #8cc63f;
+    font-size: 20px;
+}
+
 .feed-item ul {
     list-style-type: none;
     margin: 0;
